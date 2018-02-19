@@ -1,0 +1,24 @@
+{
+  "name": "macroscope-layout",
+  "version": "1.0.0",
+  "description": "// This repository cd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sodiumhalogenteam/macroscope-layout.git"
+  },
+  "author": "Sodium Halogen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sodiumhalogenteam/macroscope-layout/issues"
+  },
+  "homepage": "https://github.com/sodiumhalogenteam/macroscope-layout#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-watch": "^5.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+// basic markup
+
+//class creation
+.folders{
+    background: #000;
+    &__list{
+        color: $secondary-color;
+    } 
+    &__item{
+        font-style: italic;
+    }
+}

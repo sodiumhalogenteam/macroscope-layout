@@ -1,0 +1,6 @@
+.folders {
+  background: #000; }
+  .folders__list {
+    color: #444; }
+  .folders__item {
+    font-style: italic; }
