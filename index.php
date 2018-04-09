@@ -54,17 +54,44 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores voluptates ducimus eos quisquam debitis molestias possimus ea tenetur tempora accusamus assumenda, quod praesentium delectus deleniti nobis explicabo quia cumque? Atque!</p>
         </div>
         <div class="to-dos">
-          <u>To-Do</u>
-          <form action="/action_page.php" method="get">
-        <input type="checkbox" name="vehicle" value="Bike"> Task One<br>
-        <input type="checkbox" name="vehicle" value="Car" checked="checked"> Task Two<br>
-        <input type="submit" value="Submit">
-      </form>
+
+        <!-- todo list -->
+        <u>To-Do</u>
+        <ul id="todos"></ul>
       
         </div>
       </div>
       
       <script src="js/main.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
+<script>
+// vars
+var markdown = ""
+
+// get todos
+$.get('./todos.md', function(data) {
+  markdown = data
+  //show markdown in textarea
+  //document.getElementById("todosmd").value = markdown
+
+
+  // convert markdown to html
+  var converter = new showdown.Converter();
+  var html = converter.makeHtml(markdown);
+
+// regex
+html = html.replace(/\[(| |\s)\]/gi,'<input class="task-list-item-checkbox" disabled="" id="" type="checkbox">')
+              .replace(/\[(x|X)\]/gi,'<input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox">')
+
+  console.log(html)
+
+  // add html to #todos
+  $( "#todos" ).append( html );
+})
+
+</script>
 
 </body>
 
