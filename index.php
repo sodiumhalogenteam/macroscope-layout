@@ -1,3 +1,25 @@
+<?php
+ // process form submission
+//  http://form.guide/php-form/php-form-action-self.html
+
+//var_dump($_POST);
+
+if(isset($_POST['todosmd']))
+{
+ // echo 'test, yup I see the form was submited';
+  // put data into todos.md
+  $myfile = fopen("./todos.md", "w") or die("Unable to open file!");
+  $txt = $_POST['todosmd'];
+  fwrite($myfile, $txt);
+  fclose($myfile);
+    // refresh page
+    header('Location: '.$_SERVER['PHP_SELF']);
+}
+else {
+  echo 'no changes to md file';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +80,13 @@
         <!-- todo list -->
         <u>To-Do</u>
         <ul id="todos"></ul>
-      
+        <!-- edit form -->
+<form method="post" action="./index.php" >
+  <textarea name="todosmd" id="todosmd" cols="30" rows="10"></textarea>
+  <input type="submit" value="save">
+</form>
+
+
         </div>
       </div>
       
@@ -74,7 +102,7 @@ var markdown = ""
 $.get('./todos.md', function(data) {
   markdown = data
   //show markdown in textarea
-  //document.getElementById("todosmd").value = markdown
+  document.getElementById("todosmd").value = markdown
 
 
   // convert markdown to html
